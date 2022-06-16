@@ -23,9 +23,26 @@ function runTimer() {
     stopwatchDisplay.innerText = `${stopwatchMinutes}:${stopwatchSeconds}:${stopwatchMiliseconds}`
     //console.log(stopwatchMiliseconds, stopwatchSeconds, stopwatchMinutes)
 }
-
+let interval
 function startStopwatch() {
-    setInterval(runTimer, 100)
+    clearInterval(interval)
+    interval = setInterval(runTimer, 100)
 }
 
 stopwatchStartBtn.addEventListener('click', startStopwatch)
+
+function stopStopwatch() {
+   clearInterval(interval)
+}
+
+stopwatchStopBtn.addEventListener('click', stopStopwatch)
+
+function ResetStopwatch() {
+    clearInterval(interval)
+    stopwatchSeconds = 0
+    stopwatchMinutes = 0
+    stopwatchMiliseconds = 0
+    stopwatchDisplay.innerText = `0${stopwatchMinutes}:0${stopwatchSeconds}:0${stopwatchMiliseconds}`
+}
+
+stopwatchResetBtn.addEventListener('click', ResetStopwatch)
